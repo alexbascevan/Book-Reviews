@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Book Reviews</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        
+        <h1>Book Reviews</h1>
+        
+        <a th:href="@{/addBook}"><h2>Add Book</h2></a>
+       
+      <ol>
+        <li th:each="b : ${books}">
+            <a th:href="@{'/addReview/' + ${b.id}}">
+                <span th:text="${b.name}"></span>
+            </a>
+        </li>
+      </ol>
+
+        <hr/>
+        
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Add Book</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+         <h1>Add Book</h1>
+        
+            <form th:action="@{/saveBook}" method="get" th:object="${book}">
+              <input type="hidden" th:field="*{id}" />
+             
+            
+              Name: <input type="text" th:field="*{name}"/><br/>
+              Author: <input type="text" th:field="*{author}"/><br/>
+             
+              <input type="submit" value="Save"/> 
+              
+              <!-- Cancel button -->
+              <!-- Redirects to home page -->
+              <a th:href="@{/}"><button>Back</button></a>
+                
+          </form>
+    </body>
+</html>

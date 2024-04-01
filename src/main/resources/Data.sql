@@ -24,11 +24,11 @@ INSERT INTO Book (id, name, author) VALUES (3, 'Book 3', 'Author 3');
 INSERT INTO Book (id, name, author) VALUES (4, 'Book 4', 'Author 4');
 INSERT INTO Book (id, name, author) VALUES (5, 'Book 5', 'Author 5');
 
-
 -- 
 -- -- Inserting two reviews for book with ID 1
 -- INSERT INTO Review (id, bookId, review) VALUES (1, 1, 'Review 1 for Book 1');
 -- INSERT INTO Review (id, bookId, review) VALUES (2, 1, 'Review 2 for Book 1');
+-- 
 -- 
 -- -- Inserting two reviews for book with ID 2
 -- INSERT INTO Review (id, bookId, review) VALUES (3, 2, 'Review 1 for Book 2');

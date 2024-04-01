@@ -4,6 +4,7 @@ import com.Java.BookReviews.Data.BookRepository;
 import com.Java.BookReviews.Data.ReviewRepository;
 import com.Java.BookReviews.Models.Book;
 import com.Java.BookReviews.Models.Review;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,22 +35,23 @@ public class MainController {
     }
     
     @RequestMapping("/saveBook")
-    public String saveBook(@ModelAttribute Book book, Model model){
+    public String saveBook(@ModelAttribute Book book){
         bookRepo.save(book);
         return "redirect:/";
     }
     
     @RequestMapping("/addReview/{id}")
     public String addReview(@PathVariable int id, Model model){
-        Review r = new Review(id);
-        model.addAttribute("review", r);
+        Optional<Book> book = bookRepo.findById(id);
+        model.addAttribute("book",book);
+        model.addAttribute("review", new Review());
         return "addReview";
     }
     
     @RequestMapping("/saveReview")
-    public String saveReview(@ModelAttribute Review review, Model model){
+    public String saveReview(@ModelAttribute Review review){
         reviewRepo.save(review);
         return "redirect:/";
     }
-    
+
 }

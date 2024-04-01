@@ -15,14 +15,11 @@ import lombok.*;
 public class Review  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "review_sequence")
-    @SequenceGenerator(name = "review_sequence", initialValue = 11, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "review_sequence")
+//    @SequenceGenerator(name = "review_sequence", initialValue = 11, allocationSize = 1)
     private int id;
     private int bookId;
     private String review;
-    
-    public Review(int bookId){
-        this.bookId = bookId;
-    }
     
 }//end of Review

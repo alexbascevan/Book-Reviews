@@ -4,22 +4,26 @@
         <title>Book Reviews</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script th:src="@{/script.js}"></script>
     </head>
     <body>
         
         <h1>Book Reviews</h1>
         
-        <a th:href="@{/addBook}"><h2>Add Book</h2></a>
+        <a th:href="@{/addBook}"><button>Add Book</button></a>
        
       <ol>
         <li th:each="b : ${books}">
-            <a th:href="@{'/addReview/' + ${b.id}}">
-                <span th:text="${b.name}"></span>
-            </a>
+            <span th:text="${b.name}"></span>
+            <a th:href="@{'/addReview/' + ${b.id}}"><button>Add Review</button></a>
+            <a href="#" th:onclick="'getReviews('+ ${b.id} + ')'"><button>Show Reviews</button></a>
         </li>
       </ol>
+      
+      <hr/>
+      
+      <div th:id="showReviews"></div>
 
-        <hr/>
         
     </body>
 </html>

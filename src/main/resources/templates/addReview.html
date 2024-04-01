@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Add Review</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <h1>Add Review</h1>
-          
-          <form th:action="@{/saveReview}" method="get" th:object="${review}">
-              <input type="hidden" th:field="*{id}" />
-             
-            
-              Input Review: <input type="text" th:field="*{review}"/><br/>
-             
-              <input type="submit" value="Save"/> 
-              
-              <!-- Cancel button -->
-              <!-- Redirects to home page -->
-              <a th:href="@{/}"><button>Back</button></a>
-                
-          </form>
-         
-    </body>
+<head>
+    <title>Add Review</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <h1>Add Review</h1>
+
+    <!-- Check if book is present before accessing its properties -->
+    <h2 th:if="${book.isPresent()}" th:text="'Book: ' + ${book.get().name}"></h2>
+
+    <form th:action="@{/saveReview}" method="post" th:object="${review}">
+        <input type="hidden" th:field="*{id}"/>
+        
+        <input type="hidden" th:if="${book.isPresent()}" th:field="*{bookId}" th:value="${book.get().id}"/>
+
+        Input Review: <input type="text" th:field="*{review}"/><br/>
+
+        <input type="submit" value="Save"/>
+
+        <!-- Cancel button -->
+        <!-- Redirects to home page -->
+        <a th:href="@{/}"><button type="button">Back</button></a>
+
+    </form>
+
+</body>
 </html>

@@ -12,46 +12,45 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-@Controller
+@Controller 
 public class MainController {
     
     @Autowired
-    BookRepository bookRepo;
+    BookRepository bookRepo; // Autowires the BookRepository for accessing book data
     
     @Autowired
-    ReviewRepository reviewRepo;
+    ReviewRepository reviewRepo; // Autowires the ReviewRepository for accessing review data
     
-    @RequestMapping("/")
+    @RequestMapping("/") // Maps the root URL to this method
     public String index(Model model){
-        model.addAttribute("books", bookRepo.findAll());
-        return "index";
+        model.addAttribute("books", bookRepo.findAll()); // Adds all books to the model for display
+        return "index"; // Returns the name of the view template to be rendered
     }
     
-    @RequestMapping("/addBook")
+    @RequestMapping("/addBook") // Maps the "/addBook" URL to this method
     public String addBook(Model model){
-        model.addAttribute("book", new Book());
-        return "addBook";
+        model.addAttribute("book", new Book()); // Adds a new Book object to the model
+        return "addBook"; // Returns the name of the view template for adding a book
     }
     
-    @RequestMapping("/saveBook")
+    @RequestMapping("/saveBook") // Maps the "/saveBook" URL to this method
     public String saveBook(@ModelAttribute Book book){
-        bookRepo.save(book);
-        return "redirect:/";
+        bookRepo.save(book); // Saves the book data to the repository
+        return "redirect:/"; // Redirects the user back to the root URL
     }
     
-    @RequestMapping("/addReview/{id}")
+    @RequestMapping("/addReview/{id}") // Maps the "/addReview/{id}" URL to this method
     public String addReview(@PathVariable int id, Model model){
-        Optional<Book> book = bookRepo.findById(id);
-        model.addAttribute("book",book);
-        model.addAttribute("review", new Review());
-        return "addReview";
+        Optional<Book> book = bookRepo.findById(id); // Retrieves the book by ID
+        model.addAttribute("book",book); // Adds the book to the model for display
+        model.addAttribute("review", new Review()); // Adds a new Review object to the model
+        return "addReview"; // Returns the name of the view template for adding a review
     }
     
-    @RequestMapping("/saveReview")
+    @RequestMapping("/saveReview") // Maps the "/saveReview" URL to this method
     public String saveReview(@ModelAttribute Review review){
-        reviewRepo.save(review);
-        return "redirect:/";
+        reviewRepo.save(review); // Saves the review data to the repository
+        return "redirect:/"; // Redirects the user back to the root URL
     }
 
-}
+}//end of MainController

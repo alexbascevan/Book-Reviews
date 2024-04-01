@@ -11,7 +11,7 @@
     <!-- Form for adding a book -->
     <form th:action="@{/saveBook}" method="get" th:object="${book}">
         <!-- Hidden input field for book ID -->
-        <input type="hidden" th:field="*{id}" th:value="${id}" /> <!-- Assuming id is a variable from your model -->
+        <input type="hidden" th:field="*{id}" th:value="${id}" />
 
         <!-- Input field for book name -->
         Name: <input type="text" th:field="*{name}"/><br/>

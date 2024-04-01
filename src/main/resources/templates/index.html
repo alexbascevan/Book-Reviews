@@ -8,22 +8,21 @@
     </head>
     <body>
         
-        <h1>Book Reviews</h1>
+        <h1>Book Reviews</h1> <!-- Main heading of the webpage -->
         
-        <a th:href="@{/addBook}"><button>Add Book</button></a>
+        <a th:href="@{/addBook}"><button>Add Book</button></a> <!-- Link to add a book -->
        
-      <ol>
-        <li th:each="b : ${books}">
-            <span th:text="${b.name}"></span>
-            <a th:href="@{'/addReview/' + ${b.id}}"><button>Add Review</button></a>
-            <a href="#" th:onclick="'getReviews('+ ${b.id} + ')'"><button>Show Reviews</button></a>
-        </li>
-      </ol>
+      <ol> <!-- Start of ordered list -->
+        <li th:each="b : ${books}"> <!-- Loop through each book -->
+            <span th:text="${b.name}"></span> <!-- Display book name -->
+            <a th:href="@{'/addReview/' + ${b.id}}"><button>Add Review</button></a> <!-- Link to add a review for the book -->
+            <a href="#" th:onclick="'getReviews('+ ${b.id} + ')'"><button>Show Reviews</button></a> <!-- Button to show reviews for the book -->
+        </li> <!-- End of list item -->
+      </ol> <!-- End of ordered list -->
       
-      <hr/>
+      <hr/> 
       
-      <div th:id="showReviews"></div>
-
+      <div th:id="showReviews"></div> <!-- Placeholder for showing reviews -->
         
     </body>
 </html>

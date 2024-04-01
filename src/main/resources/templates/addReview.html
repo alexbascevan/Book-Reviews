@@ -5,26 +5,32 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-    <h1>Add Review</h1>
+    <body>
+        <h1>Add Review</h1>
 
-    <!-- Check if book is present before accessing its properties -->
-    <h2 th:if="${book.isPresent()}" th:text="'Book: ' + ${book.get().name}"></h2>
+        <!-- Check if a book is present before accessing its properties -->
+        <h2 th:if="${book.isPresent()}" th:text="'Book: ' + ${book.get().name}"></h2>
 
-    <form th:action="@{/saveReview}" method="post" th:object="${review}">
-        <input type="hidden" th:field="*{id}"/>
-        
-        <input type="hidden" th:if="${book.isPresent()}" th:field="*{bookId}" th:value="${book.get().id}"/>
+        <!-- Form for submitting a review -->
+        <form th:action="@{/saveReview}" method="post" th:object="${review}">
+            <!-- Hidden input field for the review ID -->
+            <input type="hidden" th:field="*{id}"/>
 
-        Input Review: <input type="text" th:field="*{review}"/><br/>
+            <!-- Hidden input field for the book ID -->
+            <!-- Only displayed if a book is present -->
+            <input type="hidden" th:if="${book.isPresent()}" th:field="*{bookId}" th:value="${book.get().id}"/>
 
-        <input type="submit" value="Save"/>
+            <!-- Input field for entering the review content -->
+            Input Review: <input type="text" th:field="*{review}"/><br/>
 
-        <!-- Cancel button -->
-        <!-- Redirects to home page -->
-        <a th:href="@{/}"><button type="button">Back</button></a>
+            <!-- Submit button -->
+            <input type="submit" value="Save"/>
 
-    </form>
+            <!-- Cancel button -->
+            <!-- Redirects to the home page -->
+            <a th:href="@{/}"><button type="button">Back</button></a>
+        </form>
 
-</body>
+    </body>
 </html>
+

@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Add Review</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
+    <head>
+        <title>Add Review</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- CSS styles embedded directly into the HTML -->
+        <style>
+            /* Style for the main heading */
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+
+            /* Style for the book name */
+            h2 {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                color: #007bff;
+            }
+
+            /* Style for the form container */
+            form {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+            }
+
+            /* Style for input fields */
+            input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            /* Style for submit button */
+            input[type="submit"] {
+                background-color: #28a745;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* Style for back button */
+            .back-button {
+                background-color: #ffc107;
+                color: #333;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* Align back button to the left */
+            .back-button-container {
+                text-align: left;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
     <body>
+
         <h1>Add Review</h1>
 
         <!-- Check if a book is present before accessing its properties -->
         <h2 th:if="${book.isPresent()}" th:text="'Book: ' + ${book.get().name}"></h2>
-
+        
         <!-- Form for submitting a review -->
-        <form th:action="@{/saveReview}" method="post" th:object="${review}">
+        <form th:action="@{/saveReview}" method="get" th:object="${revw}">
             <!-- Hidden input field for the review ID -->
-            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{id}" />
 
             <!-- Hidden input field for the book ID -->
-            <!-- Only displayed if a book is present -->
-            <input type="hidden" th:if="${book.isPresent()}" th:field="*{bookId}" th:value="${book.get().id}"/>
+            <input type="hidden"  th:field="*{bookId}" />
 
             <!-- Input field for entering the review content -->
-            Input Review: <input type="text" th:field="*{review}"/><br/>
+            Input Review: <input type="text" th:field="*{revtext}"/><br/>
 
             <!-- Submit button -->
             <input type="submit" value="Save"/>
 
-            <!-- Cancel button -->
-            <!-- Redirects to the home page -->
-            <a th:href="@{/}"><button type="button">Back</button></a>
         </form>
+
+        <!-- Cancel button -->
+        <!-- Redirects to the home page -->
+        <div class="back-button-container">
+            <a th:href="@{/}"><button type="button" class="back-button">Back</button></a>
+        </div>
 
     </body>
 </html>
-

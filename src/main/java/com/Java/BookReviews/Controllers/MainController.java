@@ -41,15 +41,17 @@ public class MainController {
     
     @RequestMapping("/addReview/{id}") // Maps the "/addReview/{id}" URL to this method
     public String addReview(@PathVariable int id, Model model){
-        Optional<Book> book = bookRepo.findById(id); // Retrieves the book by ID
-        model.addAttribute("book",book); // Adds the book to the model for display
-        model.addAttribute("review", new Review()); // Adds a new Review object to the model
+        Review review = new Review();
+        review.setBookId(id);
+        model.addAttribute("book",bookRepo.findById(id)); // Adds the book to the model for display
+        model.addAttribute("revw", review ); // Adds a new Review object to the model
         return "addReview"; // Returns the name of the view template for adding a review
     }
     
     @RequestMapping("/saveReview") // Maps the "/saveReview" URL to this method
-    public String saveReview(@ModelAttribute Review review){
-        reviewRepo.save(review); // Saves the review data to the repository
+    public String saveReview(@ModelAttribute Review revw){
+        System.out.println("**** Saving "+revw);
+        reviewRepo.save(revw); // Saves the review data to the repository
         return "redirect:/"; // Redirects the user back to the root URL
     }
 

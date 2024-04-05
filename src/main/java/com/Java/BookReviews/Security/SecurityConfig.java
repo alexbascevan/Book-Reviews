@@ -2,6 +2,7 @@ package com.Java.BookReviews.Security;
 
 
 import com.Java.BookReviews.Services.UserDetailsServiceImpl;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,9 +48,14 @@ public class SecurityConfig {
     throws Exception {
     http.authorizeHttpRequests(auth -> auth
 //    .requestMatchers("/").permitAll() // index is not authenticated
+    .requestMatchers(PathRequest.toH2Console()).permitAll()//allow h2
     .anyRequest().authenticated())
     .httpBasic(Customizer.withDefaults())
     .formLogin(Customizer.withDefaults());
+    
+    http.csrf((csrf) -> csrf.disable());//allow h2
+    http.headers((headers) -> headers.frameOptions((frame) -> frame.sameOrigin()));//allow h2
+    
     return http.build();
     }
 

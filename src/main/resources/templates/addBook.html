@@ -1,29 +1,86 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Add Book</title> 
-    <meta charset="UTF-8"/> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-    <h1>Add Book</h1> 
+    <head>
+        <title>Add Book</title> 
+        <meta charset="UTF-8"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- Form for adding a book -->
-    <form th:action="@{/saveBook}" method="get" th:object="${book}">
-        <!-- Hidden input field for book ID -->
-        <input type="hidden" th:field="*{id}" th:value="${id}" />
+        <!-- CSS styles embedded directly into the HTML -->
+        <style>
+            /* Style for the main heading */
+            h1 {
+                text-align: center;
+                color: #333;
+            }
 
-        <!-- Input field for book name -->
-        Name: <input type="text" th:field="*{name}"/><br/>
+            /* Style for the form container */
+            form {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+            }
 
-        <!-- Input field for author name -->
-        Author: <input type="text" th:field="*{author}"/><br/>
+            /* Style for input fields */
+            input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
 
-        <!-- Submit button to save the book -->
-        <input type="submit" value="Save"/> 
+            /* Style for submit button */
+            input[type="submit"] {
+                background-color: #28a745;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* Style for back button */
+            .back-button {
+                background-color: #ffc107;
+                color: #333;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* Align back button to the left */
+            .back-button-container {
+                text-align: left;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Add Book</h1> 
+
+        <!-- Form for adding a book -->
+        <form th:action="@{/saveBook}" method="get" th:object="${book}">
+            <!-- Hidden input field for book ID -->
+            <input type="hidden" th:field="*{id}" th:value="${id}" />
+
+            <!-- Input field for book name -->
+            Name: <input type="text" th:field="*{name}"/><br/>
+
+            <!-- Input field for author name -->
+            Author: <input type="text" th:field="*{author}"/><br/>
+
+            <!-- Submit button to save the book -->
+            <input type="submit" value="Save"/> 
+        </form>
 
         <!-- Cancel button that redirects to the home page -->
-        <a th:href="@{/}"><button>Back</button></a>
-    </form>
-</body>
+        <div class="back-button-container">
+            <a th:href="@{/}"><button class="back-button">Back</button></a>
+        </div>
+    </body>
 </html>

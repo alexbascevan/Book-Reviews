@@ -1,0 +1,146 @@
+/* Main heading */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Add Book button */
+.add-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* List of books */
+.book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Each book item */
+.book-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Book name */
+.book-name {
+    font-weight: bold;
+}
+
+/* Button group */
+.button-group {
+    margin-top: 10px;
+}
+
+/* Add Review button */
+.review-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Show Reviews button */
+.show-review-button {
+    background-color: #ffc107;
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Form container */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Input fields */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit button */
+input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Back button */
+.back-button {
+    background-color: #ffc107;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Align back button to the left */
+.back-button-container {
+    text-align: left;
+    margin-top: 20px;
+}
+
+/* Book Info */
+#showBookInfo {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#showBookInfo h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#showBookInfo p {
+    margin-bottom: 5px;
+}
+
+/* Reviews */
+#showReviews {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#showReviews h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#showReviews ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#showReviews li {
+    margin-bottom: 5px;
+}

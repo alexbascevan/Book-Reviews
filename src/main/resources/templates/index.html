@@ -4,70 +4,8 @@
         <title>Book Reviews</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="/styles.css"/>
         <script th:src="@{/script.js}"></script>
-
-        <!-- CSS styles embedded directly into the HTML -->
-        <style>
-            /* Style for the main heading */
-            h1 {
-                text-align: center;
-                color: #333;
-            }
-
-            /* Style for the "Add Book" button */
-            .add-button {
-                background-color: #007bff;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            /* Style for the list of books */
-            .book-list {
-                list-style-type: none;
-                padding: 0;
-            }
-
-            /* Style for each book item */
-            .book-item {
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                padding: 10px;
-                border-radius: 5px;
-            }
-
-            /* Style for the book name */
-            .book-name {
-                font-weight: bold;
-            }
-
-            /* Style for the button group */
-            .button-group {
-                margin-top: 10px;
-            }
-
-            /* Style for the "Add Review" button */
-            .review-button {
-                background-color: #28a745;
-                color: #fff;
-                padding: 5px 10px;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-
-            /* Style for the "Show Reviews" button */
-            .show-review-button {
-                background-color: #ffc107;
-                color: #333;
-                padding: 5px 10px;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-        </style>
     </head>
     <body>
 
@@ -80,14 +18,19 @@
             <span th:text="${b.name}" class="book-name"></span> <!-- Display book name -->
             <div class="button-group">
                 <a th:href="@{'/addReview/' + ${b.id}}"><button class="review-button">Add Review</button></a> <!-- Link to add a review for the book -->
-                <a href="#" th:onclick="'getReviews('+ ${b.id} + ')'"><button class="show-review-button">Show Reviews</button></a> <!-- Button to show reviews for the book -->
+                <a href="#" th:onclick="'getBookInfo(' + ${b.id} + ')'"><button class="show-review-button">Show Reviews</button></a> <!-- Button to show reviews for the book -->
+
             </div>
         </li> <!-- End of list item -->
         </ol> <!-- End of ordered list -->
 
         <hr/> 
 
-        <div th:id="showReviews"></div> <!-- Placeholder for showing reviews -->
+        <!-- Placeholder for showing book information -->
+        <div id="showBookInfo"></div>
+
+        <!-- Placeholder for showing reviews -->
+        <div th:id="showReviews"></div>
 
     </body>
 </html>
